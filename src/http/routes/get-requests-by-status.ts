@@ -1,5 +1,5 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import { getRequestsByStatus } from '../../use-cases/get-requests-by-status'
+import { getRequestsByStatus } from '../../use-cases/request/get-requests-by-status'
 import { z } from 'zod'
 
 export const getRequestsByStatusRoute: FastifyPluginAsyncZod = async app => {

@@ -9,10 +9,10 @@ export async function updateRegisterStatusRequest({
   id,
   status,
 }: UpdateRegisterStatusRequest) {
-  const register = await prisma.registered.update({
+  const registered = await prisma.registered.update({
     where: { id },
     data: { status },
   })
 
-  return { register }
+  return { registered }
 }

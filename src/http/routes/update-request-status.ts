@@ -1,10 +1,10 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { updateRegisterStatusRequest } from '../../use-cases/register/update-register-status'
+import { updateRequestStatusRequest } from '../../use-cases/request/update-request-status'
 
-export const updateRegisterStatusRoute: FastifyPluginAsyncZod = async app => {
+export const updateRequestStatusRoute: FastifyPluginAsyncZod = async app => {
   app.patch(
-    '/registers',
+    '/requests',
     {
       schema: {
         body: z.object({
@@ -16,9 +16,9 @@ export const updateRegisterStatusRoute: FastifyPluginAsyncZod = async app => {
     async (request, reply) => {
       const { status, id } = request.body
 
-      const { registered } = await updateRegisterStatusRequest({ id, status })
+      const { requester } = await updateRequestStatusRequest({ id, status })
 
-      reply.status(200).send(registered)
+      reply.status(200).send(requester)
     }
   )
 }
