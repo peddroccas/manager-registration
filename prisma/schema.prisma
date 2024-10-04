@@ -17,6 +17,7 @@ enum Status {
   NEW
   ACCEPTED
   DENIED
+  SENT
 }
 
 model Requester {

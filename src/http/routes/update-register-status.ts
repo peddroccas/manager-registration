@@ -9,7 +9,7 @@ export const updateRegisterStatusRoute: FastifyPluginAsyncZod = async app => {
       schema: {
         body: z.object({
           id: z.string().uuid(),
-          status: z.enum(['NEW', 'DENIED', 'ACCEPTED']),
+          status: z.enum(['NEW', 'DENIED', 'ACCEPTED', 'SENT']),
         }),
       },
     },

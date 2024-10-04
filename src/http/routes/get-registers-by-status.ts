@@ -8,7 +8,7 @@ export const getRegistersByStatusRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         params: z.object({
-          status: z.enum(['NEW', 'DENIED', 'ACCEPTED']),
+          status: z.enum(['NEW', 'DENIED', 'ACCEPTED', 'SENT']),
         }),
       },
     },

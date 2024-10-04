@@ -2,7 +2,7 @@ import { prisma } from '../../lib/prisma'
 
 interface UpdateRegisterStatusRequest {
   id: string
-  status: 'NEW' | 'ACCEPTED' | 'DENIED'
+  status: 'NEW' | 'ACCEPTED' | 'DENIED' | 'SENT'
 }
 
 export async function updateRegisterStatusRequest({
