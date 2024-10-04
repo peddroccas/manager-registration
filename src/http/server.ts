@@ -9,6 +9,8 @@ import {
   serializerCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
+import { requestRoutes } from './controllers/request'
+import { registerRoutes } from './controllers/register'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -19,13 +21,8 @@ app.register(fastifyCors, {
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-// Register
-app.register(getAllRegistersRoute)
-app.register(getRegistersByStatusRoute)
-
-// Request
-app.register(getAllRequestsRoute)
-app.register(getRequestsByStatusRoute)
+app.register(requestRoutes)
+app.register(registerRoutes)
 
 app
   .listen({
