@@ -18,7 +18,7 @@ export const updateRegisterStatusRoute: FastifyPluginAsyncZod = async app => {
 
       const { registered } = await updateRegisterStatusRequest({ id, status })
 
-      reply.status(200).send(registered)
+      return reply.status(200).send(registered)
     }
   )
 }

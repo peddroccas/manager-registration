@@ -5,6 +5,6 @@ export const getAllRequestsRoute: FastifyPluginAsyncZod = async app => {
   app.get('/requests', async (request, reply) => {
     const { requests } = await getAllRequests()
 
-    reply.status(200).send(requests)
+    return reply.status(200).send(requests)
   })
 }

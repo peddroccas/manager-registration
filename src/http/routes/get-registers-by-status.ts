@@ -17,7 +17,7 @@ export const getRegistersByStatusRoute: FastifyPluginAsyncZod = async app => {
 
       const { registers } = await getRegistersByStatus({ status })
 
-      reply.status(200).send(registers)
+      return reply.status(200).send(registers)
     }
   )
 }
