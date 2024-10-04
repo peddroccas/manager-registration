@@ -1,17 +1,29 @@
 import fastifyCors from '@fastify/cors'
 import fastify from 'fastify'
-import { getNewRequestsRoute } from './routes/get-new-requests'
-import { getNewRegistersRoute } from './routes/get-new-registers'
+import { getNewRequestsRoute } from './routes/get-requests-by-status'
+import {
+  getNewRegistersRoute,
+  getRegistersByStatusRoute,
+} from './routes/get-registers-by-status'
 import { getAllRegistersRoute } from './routes/get-all-registers'
 import { getAllRequestsRoute } from './routes/get-all-requests'
+import {
+  validatorCompiler,
+  serializerCompiler,
+  type ZodTypeProvider,
+} from 'fastify-type-provider-zod'
 
-export const app = fastify()
+const app = fastify().withTypeProvider<ZodTypeProvider>()
+
 app.register(fastifyCors, {
   origin: '*',
 })
 
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
+
 app.register(getNewRequestsRoute)
-app.register(getNewRegistersRoute)
+app.register(getRegistersByStatusRoute)
 app.register(getAllRegistersRoute)
 app.register(getAllRequestsRoute)
 

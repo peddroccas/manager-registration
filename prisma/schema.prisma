@@ -15,7 +15,7 @@ datasource db {
 
 enum Status {
   NEW
-  ACCEPT
+  ACCEPTED
   DENIED
 }
 
