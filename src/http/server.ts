@@ -1,10 +1,7 @@
 import fastifyCors from '@fastify/cors'
 import fastify from 'fastify'
-import { getNewRequestsRoute } from './routes/get-requests-by-status'
-import {
-  getNewRegistersRoute,
-  getRegistersByStatusRoute,
-} from './routes/get-registers-by-status'
+import { getRequestsByStatusRoute } from './routes/get-requests-by-status'
+import { getRegistersByStatusRoute } from './routes/get-registers-by-status'
 import { getAllRegistersRoute } from './routes/get-all-registers'
 import { getAllRequestsRoute } from './routes/get-all-requests'
 import {
@@ -22,10 +19,13 @@ app.register(fastifyCors, {
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-app.register(getNewRequestsRoute)
-app.register(getRegistersByStatusRoute)
+// Register
 app.register(getAllRegistersRoute)
+app.register(getRegistersByStatusRoute)
+
+// Request
 app.register(getAllRequestsRoute)
+app.register(getRequestsByStatusRoute)
 
 app
   .listen({

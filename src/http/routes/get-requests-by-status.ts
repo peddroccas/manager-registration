@@ -2,7 +2,7 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { getRequestsByStatus } from '../../use-cases/get-requests-by-status'
 import { z } from 'zod'
 
-export const getNewRequestsRoute: FastifyPluginAsyncZod = async app => {
+export const getRequestsByStatusRoute: FastifyPluginAsyncZod = async app => {
   app.get(
     '/requests/:status',
     {
